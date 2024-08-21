@@ -92,18 +92,26 @@
             <td th:text="${dog.getSize()}"></td>
             <td th:text="${dog.getPrice()}"></td>
             <td>
-                <a class="listbutton">Edit</a>
-            </td>
-        </tr>
 
-        </tbody>
-    </table>
+                <!--  <a class="listbutton"
+                     th:href="@{/editDog/{name}/{breed}/{age}/{size}/{price}(name=${dog.name}, breed=${dog.breed}, age=${dog.age}, size=${dog.size}, price=${dog.price})}">
+                      Edit
+                  </a> -->
+                <a class="listbutton"
+                   th:href="@{/editDog/{id}(id=${dog.id})}">
+                    Edit
+                </a>
+              </td>
+          </tr>
 
-</div>
+          </tbody>
+      </table>
+
+  </div>
 
 
 
 
 
 
-</html>
+  </html>

@@ -47,31 +47,27 @@
 
     <form method="GET">
         Search:
-        <input type="text" name="q" value="" />
+        <input type="text" name="q" value=""/>
         <!-- <input type="hidden" name="sortCol"  value="<?php echo $sortCol; ?>" />       -->
     </form>
     <div class="cards dogcards">
         <div class="card dogcard" th:each="dog: ${dogs}">
             <div class="card-top-info">
-          <h3 th:text="${dog.getName()}"></h3>
+                <h3 th:text="${dog.getName()}"></h3>
                 <img th:src="${dog.getImage()}" class="animal-img">
             </div>
             <p>
 
-                <ul style="text-align: center">
-                    <li th:text="${dog.getBreed()}"></li>
-            <li th:text="${dog.getAge()}"></li>
-            <li th:text="${dog.getPrice()}"> kr</li>
-                </ul>
+            <ul style="text-align: center">
+                <li th:text="${dog.getBreed()}"></li>
+                <li th:text="${dog.getAge()}"></li>
+                <li th:text="${dog.getPrice()}"> kr</li>
+            </ul>
             </p>
         </div>
     </div>
 
 </div>
-
-
-
-
 
 
 </html>
