@@ -20,7 +20,7 @@ public class AdminDogController {
     @GetMapping(path = "/admin/dogs")
     String list(Model model) {
         model.addAttribute("activeFunction", "home");
-//        setupVersion(model);
+//       setupVersion(model);
 
         model.addAttribute("dogs", dogService.getPublicDogs());
         return "admin/dogs/list";

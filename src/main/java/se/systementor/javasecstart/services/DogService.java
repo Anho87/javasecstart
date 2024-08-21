@@ -22,7 +22,7 @@ public class DogService {
         try {
             price = Integer.parseInt(searchWord);
         } catch (NumberFormatException e) {
-            price = -1; // or any invalid price value that shouldn't match
+            price = -1; //or any invalid price value that shouldn't match
         }
         if (price != -1) {
             return dogRepository.findAllByPrice(price, sort);
