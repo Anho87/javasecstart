@@ -25,8 +25,10 @@ public class User {
     private String username;
     private String password;
     private String firstName;
-    private boolean enabled;
+    private boolean enabled =  false;
     private String resetToken;
     private LocalDateTime resetTokenCreationTime;
+    private String emailVerificationToken;
+    private LocalDateTime emailTokenExpiration;
     
 }

@@ -39,7 +39,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/login", "/resetPasswordLink/**", "/handleResetPassword/**", "/resetPassword/**", "/updatedPassword/**", "/register").permitAll()
+                        .requestMatchers("/login", "/resetPasswordLink/**", "/handleResetPassword/**", "/resetPassword/**", "/updatedPassword/**", "/register", "/verify").permitAll()
                         .anyRequest().authenticated()
                 )
 

@@ -11,6 +11,8 @@ public interface UserRepo extends CrudRepository<User, UUID> {
     User getByUsername(@Param("username") String username);
 
     User findUserByResetToken(String resetToken);
-    
+
+    User findByUsername(String username);
+    User findByEmailVerificationToken(String emailVerificationToken);
     User findUserByUsername(String email);
 }
