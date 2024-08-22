@@ -59,26 +59,36 @@
         <tr class="tabulator-row">
             <th class="tabulator-cell">
                 Name
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Name', sortOrder='asc')}">
+                    <i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Name', sortOrder='desc')}">
+                    <i class="fa-solid fa-arrow-down-a-z"></i></a>
             </th>
 
-            <th >
+            <th>
                 Breed
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Breed', sortOrder='asc')}">
+                    <i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Breed', sortOrder='desc')}">
+                    <i class="fa-solid fa-arrow-down-a-z"></i></a>
             </th>
             <th>Age
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Age', sortOrder='asc')}">
+                    <i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Age', sortOrder='desc')}">
+                    <i class="fa-solid fa-arrow-down-a-z"></i></a>
             </th>
             <th>Size
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Size', sortOrder='asc')}">
+                    <i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Size', sortOrder='desc')}">
+                    <i class="fa-solid fa-arrow-down-a-z"></i></a>
             </th>
             <th>Price
-                <a href="?"><i class="fa-solid fa-arrow-up-a-z"></i></a>
-                <a href="?"><i class="fa-solid fa-arrow-down-z-a"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Price', sortOrder='asc')}">
+                    <i class="fa-solid fa-arrow-up-a-z"></i></a>
+                <a th:href="@{/admin/searchedDogs(q=${q}, sortCol='Price', sortOrder='desc')}">
+                    <i class="fa-solid fa-arrow-down-a-z"></i></a>
             </th>
             <th></th>
         </tr>
@@ -104,14 +114,14 @@
               </td>
           </tr>
 
-          </tbody>
-      </table>
+        </tbody>
+    </table>
 
-  </div>
-
-
+</div>
 
 
 
 
-  </html>
+
+
+</html>
