@@ -4,22 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     private UserRepo userRepo;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder; // Use PasswordEncoder
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -44,8 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             loadUserByUsername(mail);
             return "User already exists";
         } catch (UsernameNotFoundException e) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String hash = encoder.encode(password);
+            String hash = passwordEncoder.encode(password); // Use PasswordEncoder to hash the password
             User user = User.builder().enabled(true).password(hash).username(mail).build();
             userRepo.save(user);
             return "New user added";
@@ -62,11 +61,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 user.setUsername(newMail);
             }
             if (password != null && !password.isEmpty()) {
-                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-                String hash = encoder.encode(password);
+                String hash = passwordEncoder.encode(password); // Use PasswordEncoder to hash the password
                 user.setPassword(hash);
             }
-          
             userRepo.save(user);
             return "User updated successfully";
         } catch (UsernameNotFoundException e) {
@@ -82,7 +79,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userRepo.delete(user);
         return "User deleted successfully";
     }
-
 
     public User getUserByResetToken(String token) {
         return userRepo.findUserByResetToken(token);
@@ -107,7 +103,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             resetUserTokens(user);
             return "Time has expired for you password reset link";
         } else {
-            String hashedPassword = passwordEncoder.encode(newPassword);
+            String hashedPassword = passwordEncoder.encode(newPassword); // Use PasswordEncoder to hash the password
             user.setPassword(hashedPassword);
             resetUserTokens(user);
             userRepo.save(user);

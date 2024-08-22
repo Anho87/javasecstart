@@ -2,15 +2,20 @@ package se.systementor.javasecstart.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public class UserDataSeeder {
     @Autowired
     UserRepo userRepository;
-    
+
+    private final PasswordEncoder passwordEncoder;
+
+    public UserDataSeeder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
 
     public void seedUsers() {
         if (userRepository.getByUsername("johan.johnsson@airbnb.se") == null) {
@@ -25,8 +30,7 @@ public class UserDataSeeder {
     }
 
     private void addUser(String mail,String firstName, String password) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hash = encoder.encode(password);
+        String hash = passwordEncoder.encode(password);
         User user = User.builder().enabled(true).password(hash).username(mail).firstName(firstName).build();
         userRepository.save(user);
     }
